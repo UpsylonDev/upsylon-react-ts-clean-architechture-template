@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedParameters": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "target": "ES2020",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "constants/*": ["src/constants/*"],
+      "domains/*": ["src/domains/*"],
+      "adapters/*": ["src/adapters/*"],
+      "di/*": ["src/di/*"],
+      "hooks/*": ["src/frameworks/hooks/*"],
+      "components/*": ["src/frameworks/components/*"]
+    }
+  },
+  "include": ["src", "cypress"]
+}
