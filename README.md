@@ -4,18 +4,6 @@ This is a small idea project that applies the principles of `Domain-driven Desig
 
 This project implements simple functionality for displaying, adding, and deleting posts using Vite's `mock-server`. It is designed to provide a quick way to understand the overall structure and operation of the project, and it can also be used as a boilerplate code for new projects.
 
-#### ⚠️ Discontinued (2025-01-13)
-
-> This project has been discontinued due to significant overlap with the "[clean-architecture-with-typescript](https://github.com/falsy/clean-architecture-with-typescript)" project. Future updates will only be provided through the "clean-architecture-with-typescript" repository.
-
-#### Note.
-
-> \+ My English is not perfect, so please bear with me.
-
-## Languages
-
-- [English](https://github.com/falsy/react-width-clean-architecture)
-
 ## Use Stack
 
 TypeScript, Vite, React, Jotai, Tailwind CSS, Axios, ESLint, Jest, RTL, Cypress, GitHub Actions

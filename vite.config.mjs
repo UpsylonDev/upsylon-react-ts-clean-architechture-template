@@ -26,7 +26,7 @@ export default defineConfig({
     {
       name: "mock-server",
       configureServer(server) {
-        const user = { id: "1", name: "falsy" }
+        const user = { id: "1", name: "upsylon" }
         let posts = [
           {
             id: "1",
