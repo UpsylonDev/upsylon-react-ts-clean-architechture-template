@@ -9,20 +9,7 @@ type HeaderProps = {
   children: ReactNode
 }
 
-// Presentational component: renders the header visually
-function HeaderComponent({ logo, className = "", children }: HeaderProps) {
-  const baseClasses =
-    "flex justify-between items-center py-3 px-4 bg-black text-white"
-
-  return (
-    <header className={clsx(baseClasses, className)}>
-      <div className="flex align-middle items-center gap-5">{logo}</div>
-      <div>{children}</div>
-    </header>
-  )
-}
-
-// Main component: handles local rendering or Layout Context rendering
+// Main component (container): handles local rendering or Layout Context rendering
 export default function Header({ logo, className, children }: HeaderProps) {
   const { setBaseHeader } = useContext(Layout)
   const hasLayoutContext = Boolean(setBaseHeader)
@@ -54,5 +41,18 @@ export default function Header({ logo, className, children }: HeaderProps) {
     <HeaderComponent logo={logo} className={className}>
       {children}
     </HeaderComponent>
+  )
+}
+
+// Presentational component: renders the header visually
+function HeaderComponent({ logo, className = "", children }: HeaderProps) {
+  const baseClasses =
+    "flex justify-between items-center py-3 px-4 bg-black text-white"
+
+  return (
+    <header className={clsx(baseClasses, className)}>
+      <div className="flex align-middle items-center gap-5">{logo}</div>
+      <div>{children}</div>
+    </header>
   )
 }
