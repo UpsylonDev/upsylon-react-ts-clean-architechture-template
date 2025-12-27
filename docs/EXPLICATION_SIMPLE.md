@@ -313,3 +313,74 @@ C'est comme faire un plat :
 - 🛒 Courses = Adaptateurs (où trouver les ingrédients)
 - 👨‍🍳 Cuisinier = DI (met tout ensemble)
 - 🍽️ Assiette = React (voilà ton plat fini !)
+
+---
+
+## Déploiement avec Docker 🐳
+
+L'application peut être déployée facilement avec Docker.
+
+### Comment lancer l'application avec Docker ?
+
+```bash
+# Démarrer l'application
+docker-compose up -d
+
+# Voir les logs
+docker-compose logs -f
+
+# Arrêter l'application
+docker-compose down
+```
+
+L'application sera disponible sur **http://localhost:3000**
+
+### Comment ça marche ?
+
+**Docker fait 2 choses :**
+
+**1️⃣ Build l'application** (comme `pnpm build`)
+
+- Installe toutes les dépendances
+- Compile le code TypeScript → JavaScript
+- Génère les fichiers optimisés dans `/dist`
+
+**2️⃣ Sert l'application avec nginx**
+
+- nginx = un serveur web ultra rapide
+- Il prend les fichiers dans `/dist` et les sert aux visiteurs
+- Gère le routing de React Router (toutes les URLs mènent à `index.html`)
+
+### Pourquoi utiliser Docker ?
+
+| Avantage             | Explication                                         |
+| -------------------- | --------------------------------------------------- |
+| **Portable**         | Fonctionne partout : Windows, Mac, Linux, serveur   |
+| **Isolé**            | L'application a son propre environnement            |
+| **Rapide**           | nginx est ultra performant pour servir des fichiers |
+| **Production-ready** | Configuration optimisée pour la production          |
+
+### Architecture Docker
+
+```
+┌──────────────────────────────────────┐
+│  Stage 1: Builder (Node.js 20)      │
+│                                      │
+│  1. Installe pnpm                    │
+│  2. Installe les dépendances         │
+│  3. Build l'application (pnpm build) │
+│  4. Génère /dist                     │
+└──────────────┬───────────────────────┘
+               │
+               ▼ (copie /dist)
+┌──────────────────────────────────────┐
+│  Stage 2: nginx (Production)        │
+│                                      │
+│  1. Prend uniquement /dist           │
+│  2. Configure nginx                  │
+│  3. Sert l'application sur port 80   │
+│  4. Gestion SPA + cache + sécurité   │
+└──────────────────────────────────────┘
+```
+
+**Résultat :** L'image finale est légère (seulement nginx + fichiers /dist, sans Node.js ni node_modules)

@@ -188,6 +188,36 @@ pnpm dev
 pnpm build
 ```
 
+## Docker Deployment
+
+This project includes Docker configuration for easy deployment.
+
+### Using Docker Compose
+
+```bash
+# Build and start the container
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the container
+docker-compose down
+
+# Rebuild after modifications
+docker-compose up -d --build
+```
+
+The application will be available at **http://localhost:3000**
+
+### Docker Details
+
+- **Multi-stage build**: Optimized image size (build stage + nginx stage)
+- **nginx server**: Serves the built static files from `/dist`
+- **SPA routing**: Configured to handle React Router navigation
+- **Optimizations**: Gzip compression, static asset caching, security headers
+- **Health check**: Automatic container health monitoring
+
 ## Tests
 
 ### Unit Tests
