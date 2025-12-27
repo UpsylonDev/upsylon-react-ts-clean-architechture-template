@@ -176,10 +176,16 @@ Additionally, you can use useOptimistic, introduced in React 19, for optimistic 
 pnpm install
 ```
 
-### Run
+### dev
 
 ```
-pnpm start
+pnpm dev
+```
+
+### build > Ts > Js
+
+```
+pnpm build
 ```
 
 ## Tests

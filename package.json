@@ -4,7 +4,7 @@
   "private": true,
   "description": "React Project Based on Clean Architecture",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint",
     "format": "prettier --write .",
@@ -18,7 +18,7 @@
     "e2e:headed": "playwright test --headed",
     "prepare": "husky"
   },
-  "author": "upsylon",
+  "author": "upsylon development",
   "license": "The Unlicense",
   "dependencies": {
     "axios": "^1.7.4",
