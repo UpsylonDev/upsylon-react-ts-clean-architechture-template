@@ -49,19 +49,10 @@
     "*.min.js",
     "*.min.css",
     ".env",
-    ".env.*"
+    ".env.*",
+    "src"
   ],
-  "ignoreRegExpList": [
-    "/https?:\\/\\/[^\\s]+/g",
-    "/\\b[A-Fa-f0-9]{32,}\\b/g"
-  ],
+  "ignoreRegExpList": ["/https?:\\/\\/[^\\s]+/g", "/\\b[A-Fa-f0-9]{32,}\\b/g"],
   "flagWords": [],
-  "dictionaries": [
-    "typescript",
-    "node",
-    "npm",
-    "html",
-    "css",
-    "bash"
-  ]
+  "dictionaries": ["typescript", "node", "npm", "html", "css", "bash"]
 }

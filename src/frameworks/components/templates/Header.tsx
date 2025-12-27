@@ -2,61 +2,57 @@ import { ReactNode, useContext, useLayoutEffect } from "react"
 import clsx from "clsx"
 import Layout from "../../contexts/Layout"
 
-const HeaderComponent = ({
-  logo,
-  className = "",
-  children
-}: {
+// Header component props type
+type HeaderProps = {
   logo: ReactNode
   className?: string
   children: ReactNode
-}) => {
+}
+
+// Presentational component: renders the header visually
+function HeaderComponent({ logo, className = "", children }: HeaderProps) {
+  const baseClasses =
+    "flex justify-between items-center py-3 px-4 bg-black text-white"
+
   return (
-    <header
-      className={clsx(
-        `flex justify-between items-center py-3 px-4 bg-black text-white`,
-        className
-      )}
-    >
-      <div className={`flex align-middle items-center gap-5`}>{logo}</div>
+    <header className={clsx(baseClasses, className)}>
+      <div className="flex align-middle items-center gap-5">{logo}</div>
       <div>{children}</div>
     </header>
   )
 }
 
-export default function Header({
-  logo,
-  className,
-  children
-}: {
-  logo: ReactNode
-  className?: string
-  children: ReactNode
-}) {
+// Main component: handles local rendering or Layout Context rendering
+export default function Header({ logo, className, children }: HeaderProps) {
   const { setBaseHeader } = useContext(Layout)
+  const hasLayoutContext = Boolean(setBaseHeader)
 
+  // If Layout Context exists, "teleport" the header into the global layout
   useLayoutEffect(() => {
-    if (setBaseHeader) {
-      setBaseHeader(
-        <HeaderComponent logo={logo} className={className}>
-          {children}
-        </HeaderComponent>
-      )
-    }
-    return () => {
-      if (setBaseHeader) {
-        setBaseHeader(null)
-      }
-    }
-  }, [logo, className, children, setBaseHeader])
+    if (!setBaseHeader) return
 
-  if (setBaseHeader) {
-    return null
-  } else {
-    return (
+    // Mount the header in the layout
+    setBaseHeader(
       <HeaderComponent logo={logo} className={className}>
         {children}
       </HeaderComponent>
     )
+
+    // Cleanup on unmount
+    return () => {
+      setBaseHeader(null)
+    }
+  }, [logo, className, children, setBaseHeader])
+
+  // Layout mode: render nothing here (header is managed elsewhere)
+  if (hasLayoutContext) {
+    return null
   }
+
+  // Local mode: render the header directly
+  return (
+    <HeaderComponent logo={logo} className={className}>
+      {children}
+    </HeaderComponent>
+  )
 }

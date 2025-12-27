@@ -225,3 +225,6 @@ pnpm format:check
 ```
 
 See [PRETTIER.md](./PRETTIER.md) for detailed formatting guide and VSCode integration.
+
+## Important
+- comment always in english languages
