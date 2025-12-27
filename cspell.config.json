@@ -50,7 +50,8 @@
     "*.min.css",
     ".env",
     ".env.*",
-    "src"
+    "src",
+    "docs"
   ],
   "ignoreRegExpList": ["/https?:\\/\\/[^\\s]+/g", "/\\b[A-Fa-f0-9]{32,}\\b/g"],
   "flagWords": [],
